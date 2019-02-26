@@ -1,8 +1,7 @@
-package headfirst.observer;
+package headfirst.observer2;
 
-import headfirst.observer.display.impl.CurrentConditionDisplay;
-import headfirst.observer.display.impl.ForecastDisplay;
-import headfirst.observer.subject.impl.WeatherData;
+import headfirst.observer2.display.impl.CurrentConditionDisplay;
+import headfirst.observer2.display.impl.ForecastDisplay;
 
 public class WeatherStation {
     public static void main(String[] args) {
