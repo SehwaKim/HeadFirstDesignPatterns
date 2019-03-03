@@ -1,5 +1,7 @@
 package headfirst.factory.pizzastore;
 
+import headfirst.factory.ingredient.factory.PizzaIngredientFactory;
+import headfirst.factory.ingredient.factory.impl.CaliforniaPizzaIngredientFactory;
 import headfirst.factory.pizza.*;
 import headfirst.factory.pizza.california.CaliforniaStyleCheesePizza;
 import headfirst.factory.pizza.california.CaliforniaStyleClamPizza;
@@ -9,16 +11,31 @@ import headfirst.factory.pizza.california.CaliforniaStyleVeggiePizza;
 public class CaliforniaPizzaStore extends PizzaStore {
     @Override
     protected Pizza createPizza(String type) {
+        Pizza pizza = null;
+        PizzaIngredientFactory ingredientFactory = new CaliforniaPizzaIngredientFactory();
+
         if (type.equals("cheese")) {
-            return new CaliforniaStyleCheesePizza();
+
+            pizza = new CaliforniaStyleCheesePizza(ingredientFactory);
+            pizza.setName("Cali Style Cheese Pizza");
+
         } else if (type.equals("pepperoni")) {
-            return new CaliforniaStylePepperoniPizza();
+
+            pizza = new CaliforniaStylePepperoniPizza(ingredientFactory);
+            pizza.setName("Cali Style Cheese Pizza");
+
         } else if (type.equals("clam")) {
-            return new CaliforniaStyleClamPizza();
+
+            pizza = new CaliforniaStyleClamPizza(ingredientFactory);
+            pizza.setName("Cali Style Cheese Pizza");
+
         } else if (type.equals("veggie")) {
-            return new CaliforniaStyleVeggiePizza();
-        } else {
-            return null;
+
+            pizza = new CaliforniaStyleVeggiePizza(ingredientFactory);
+            pizza.setName("Cali Style Cheese Pizza");
+
         }
+
+        return pizza;
     }
 }

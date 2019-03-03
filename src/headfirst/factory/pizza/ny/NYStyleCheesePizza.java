@@ -1,12 +1,20 @@
 package headfirst.factory.pizza.ny;
 
+import headfirst.factory.ingredient.factory.PizzaIngredientFactory;
 import headfirst.factory.pizza.Pizza;
 
 public class NYStyleCheesePizza extends Pizza {
-    public NYStyleCheesePizza() {
-        name = "NY Style Sauce and Cheese Pizza";
-        dough = "Thin Crust Dough";
-        sauce = "Marinara Sauce";
-        toppings.add("Grated Reggiano Cheese");
+    PizzaIngredientFactory factory;
+
+    public NYStyleCheesePizza(PizzaIngredientFactory factory) {
+        this.factory = factory;
+    }
+
+    @Override
+    public void prepare() {
+        System.out.println("Preparing " + name);
+        dough = factory.createDough();
+        sauce = factory.createSauce();
+        cheese = factory.createCheese();
     }
 }

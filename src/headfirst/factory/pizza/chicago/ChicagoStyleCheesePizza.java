@@ -1,17 +1,20 @@
 package headfirst.factory.pizza.chicago;
 
+import headfirst.factory.ingredient.factory.PizzaIngredientFactory;
 import headfirst.factory.pizza.Pizza;
 
 public class ChicagoStyleCheesePizza extends Pizza {
-    public ChicagoStyleCheesePizza() {
-        name = "Chicago Style Deep Dish Cheese Pizza";
-        dough = "Extra Thick Crust Dough";
-        sauce = "Plum Tomato Sauce";
-        toppings.add("Shredded Mozzarella Cheese");
+    PizzaIngredientFactory factory;
+
+    public ChicagoStyleCheesePizza(PizzaIngredientFactory factory) {
+        this.factory = factory;
     }
 
     @Override
-    public void cut() {
-        System.out.println("Cutting the pizza into square slices");
+    public void prepare() {
+        System.out.println("Preparing " + name);
+        dough = factory.createDough();
+        sauce = factory.createSauce();
+        cheese = factory.createCheese();
     }
 }

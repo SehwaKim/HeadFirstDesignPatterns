@@ -1,23 +1,17 @@
 package headfirst.factory.pizza;
 
-import java.util.ArrayList;
-import java.util.List;
+import headfirst.factory.ingredient.*;
 
 public abstract class Pizza {
     protected String name;
-    protected String dough;
-    protected String sauce;
-    protected List<String> toppings = new ArrayList<>();
+    protected Dough dough;
+    protected Sauce sauce;
+    protected Veggies[] veggies;
+    protected Cheese cheese;
+    protected Pepperoni pepperoni;
+    protected Clam clam;
 
-    public void prepare() {
-        System.out.println("Preparing " + name);
-        System.out.println("Tossing dough...");
-        System.out.println("Adding sauce...");
-        System.out.println("Adding toppings...");
-        for (int i = 0; i < toppings.size(); i++) {
-            System.out.println("    "+toppings.get(i));
-        }
-    }
+    public abstract void prepare();
 
     public void bake() {
         System.out.println("Bake for 25 minutes at 350");
@@ -31,7 +25,16 @@ public abstract class Pizza {
         System.out.println("Place pizza in official PizzaStore box");
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getName() {
+        return name;
+    }
+
+    @Override
+    public String toString() {
         return name;
     }
 }
